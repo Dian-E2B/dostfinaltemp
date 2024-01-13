@@ -49,7 +49,7 @@
                     <i class="align-middle" data-feather="list"></i> <span class="align-middle">Academic
                         Monitoring</span>
                 </a>
-                <ul id="rsms1" class="sidebar-dropdown list-unstyled collapse {{ request()->is('rsms') || request()->is('rsmslistra7687') || request()->is('rsmslistra10612') || request()->is('rsmslistmerit') || request()->is('rsms2*') || request()->is('ongoinglistsview1*') ? 'show' : '' }}" data-bs-parent="#sidebar">
+                <ul id="rsms1" class="sidebar-dropdown list-unstyled collapse {{ request()->is('rsms') || request()->is('rsmslistra7687') || request()->is('rsmslistra10612') || request()->is('rsmslistmerit') || request()->is('rsms2*') || request()->is('ongoinglistsview1*') || request()->is('ongoinglist') ? 'show' : '' }}" data-bs-parent="#sidebar">
                     <li class="sidebar-item {{ request()->is('ongoinglist') ? 'active' : '' }}"><a class='sidebar-link' href='{{ route('ongoinglist') }}'>On-Going</a>
                     </li>
 

@@ -113,8 +113,8 @@
                                 <table id="yourDataTable" class="display nowrap compact table-striped" style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>Startyear</th>
-                                            <th>Endyear</th>
+                                            <th style="width: 10px">From</th>
+                                            <th style="width: 10px">To</th>
                                             <th>Semester</th>
                                             <th>Total Records</th>
                                             <th class="viewth" style="align-items: center !important;">View</th>
@@ -124,9 +124,22 @@
 
                                         @foreach ($results as $result)
                                             <tr>
-                                                <td>{{ $result->startyear }}</td>
-                                                <td>{{ $result->endyear }}</td>
-                                                <td>{{ $result->semester }}</td>
+                                                <td style="width: 10px">{{ $result->startyear }}</td>
+                                                <td style="width: 10px">{{ $result->endyear }}</td>
+                                                <td>
+                                                    @switch($result->semester)
+                                                        @case(1)
+                                                            1st Semester
+                                                        @break
+
+                                                        @case(2)
+                                                            2nd Semester
+                                                        @break
+
+                                                        @default
+                                                            Summer
+                                                    @endswitch
+                                                </td>
                                                 <td>{{ $result->group_year }}</td>
                                                 <td style="width: 40px !important; text-align: center"><a class="view-btn" data-startyear="{{ $result->startyear }}" data-endyear="{{ $result->endyear }}" data-semester="{{ $result->semester }}"><i class=" fas fa-eye"></i></a></td>
                                                 <!-- Add other columns as needed -->
@@ -185,9 +198,47 @@
                     scrollX: true,
                     "order": [],
                     "columnDefs": [{
-                        "targets": 4, // Index of the 5th column (zero-based index)
+                        "targets": [0, 1, 2, 4], // Index of the 5th column (zero-based index)
                         "orderable": false // Disable sorting for this column
-                    }]
+                    }],
+                    initComplete: function() {
+                        var api = this.api();
+
+                        api.columns([0, 2]).every(function(d) {
+                            var column = this;
+                            // Get the column header name
+                            var theadname = $(api.column(d).header()).text();
+                            // Create select element
+                            var select = document.createElement('select');
+                            select.add(new Option(' ' + theadname, ''));
+
+                            // Add styles to the select element
+                            select.style.padding = '1px'; // Example padding
+                            // Replace the header with the select element
+                            column.header().replaceChildren(select);
+
+                            // Apply listener for user change in value
+                            select.addEventListener('change', function() {
+                                var val = DataTable.util.escapeRegex(select.value);
+
+                                column
+                                    .search(val ? '^' + val + '$' : '', true, false)
+                                    .draw();
+                            });
+
+                            // Add list of options excluding theadname
+                            column
+                                .data()
+                                .unique()
+                                .sort()
+                                .each(function(d, j) {
+                                    // Skip theadname from the dropdown options
+                                    if (d !== theadname) {
+                                        select.add(new Option(d));
+                                    }
+                                });
+                        });
+                    },
                 });
                 console.log('Document is ready!');
 

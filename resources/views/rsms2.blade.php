@@ -670,6 +670,71 @@
                             /*  alert(data.startyear); */
                             $('#editModal').offcanvas('show');
 
+
+                            $('#saveChangesBtn').off('click').click(function() {
+                                // Gather the updated data from the modal fields
+                                var updatedData = {
+                                    NUMBER: $('#editModal #idField').val(),
+                                    NAME: $('#editModal #nameField').val(),
+                                    MF: $('#editModal #genderField').val(),
+                                    SCHOLARSHIPPROGRAM: $('#editModal #programField').val(),
+                                    SCHOOL: $('#editModal #schoolField').val(),
+                                    COURSE: $('#editModal #courseField').val(),
+                                    GRADES: $('#editModal #gradesField').val(),
+                                    SummerREG: $('#editModal #summerRegField').val(),
+                                    regformsDetails: $('#editModal #regFormsField').val(), //ongoingregforms table
+                                    STATUSENDORSEMENT: $('#editModal #statusEndorsementField').val(),
+                                    STATUSENDORSEMENT2: $('#editModal #statusEndorsement2Field').val(),
+                                    STATUS: $('#editModal #statusField').val(),
+                                    NOTATIONS: $('#editModal #notationsField').val(),
+                                    SUMMER: $('#editModal #summerField').val(),
+                                    FARELEASEDTUITION: $('#editModal #faReleaseTuitionField').val(),
+                                    FARELEASEDTUITIONBOOKSTIPEND: $('#editModal #faReleaseTuitionBookStipendField').val(),
+                                    LVDCAccount: $('#editModal #lvdCAccountField').val(),
+                                    HVCNotes: $('#editModal #lvdCAccountField').val(),
+                                    HVCNotes: $('#editModal #lvdCAccountField').val(),
+                                    semester: $('#editModal #semesterField').val(),
+                                    startyear: $('#editModal #startyearField').val(),
+                                    endyear: $('#editModal #endyearField').val(),
+                                    remarksDetails: $('#editModal #remarksField').val(), //ongoingremarks table
+                                };
+
+
+                                // Send the updated data to the server using AJAX
+                                $.ajax({
+                                    url: '{{ url('/savechangesongongoing/') }}' + '/' + number, // Replace with your server endpoint
+                                    data: updatedData,
+                                    method: 'POST', // You can use POST or PUT based on your server-side implementation
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function(response) {
+                                        // Handle success, e.g., close the modal or show a success message
+                                        notyf.success({
+                                            message: 'Record has been edited.',
+                                            duration: 3000,
+                                            position: {
+                                                x: 'right',
+                                                y: 'top',
+                                            },
+                                        })
+
+
+
+                                        // Redraw the DataTable
+                                        table.ajax.reload(null, false);
+                                        $('#editModal input').val('');
+                                        $('#editModal').offcanvas(
+                                            'hide'
+                                        ); // Assuming you want to hide the modal on success
+
+                                    },
+                                    error: function(error) {
+                                        console.error('Error saving changes:', error);
+                                    }
+                                });
+                            });
+
                         },
                         error: function(error) {
                             console.error('Error fetching data for editing:', error);
@@ -678,68 +743,7 @@
 
                     /* Save Changes Button */
                     //TODO
-                    $('#saveChangesBtn').off('click').click(function() {
-                        // Gather the updated data from the modal fields
-                        var updatedData = {
-                            NUMBER: $('#editModal #idField').val(),
-                            NAME: $('#editModal #nameField').val(),
-                            MF: $('#editModal #genderField').val(),
-                            SCHOLARSHIPPROGRAM: $('#editModal #programField').val(),
-                            SCHOOL: $('#editModal #schoolField').val(),
-                            COURSE: $('#editModal #courseField').val(),
-                            GRADES: $('#editModal #gradesField').val(),
-                            SummerREG: $('#editModal #summerRegField').val(),
-                            regformsDetails: $('#editModal #regFormsField').val(), //ongoingregforms table
-                            STATUSENDORSEMENT: $('#editModal #statusEndorsementField').val(),
-                            STATUSENDORSEMENT2: $('#editModal #statusEndorsement2Field').val(),
-                            STATUS: $('#editModal #statusField').val(),
-                            NOTATIONS: $('#editModal #notationsField').val(),
-                            SUMMER: $('#editModal #summerField').val(),
-                            FARELEASEDTUITION: $('#editModal #faReleaseTuitionField').val(),
-                            FARELEASEDTUITIONBOOKSTIPEND: $('#editModal #faReleaseTuitionBookStipendField').val(),
-                            LVDCAccount: $('#editModal #lvdCAccountField').val(),
-                            HVCNotes: $('#editModal #lvdCAccountField').val(),
-                            HVCNotes: $('#editModal #lvdCAccountField').val(),
-                            semester: $('#editModal #semesterField').val(),
-                            startyear: $('#editModal #startyearField').val(),
-                            endyear: $('#editModal #endyearField').val(),
-                            remarksDetails: $('#editModal #remarksField').val(), //ongoingremarks table
-                        };
 
-
-                        // Send the updated data to the server using AJAX
-                        $.ajax({
-                            url: '{{ url('/savechangesongongoing/') }}' + '/' +
-                                number, // Replace with your server endpoint
-                            method: 'POST', // You can use POST or PUT based on your server-side implementation
-                            data: updatedData,
-                            success: function(response) {
-                                // Handle success, e.g., close the modal or show a success message
-
-                                notyf.success({
-                                    message: 'Record has been edited.',
-                                    duration: 3000,
-                                    position: {
-                                        x: 'right',
-                                        y: 'top',
-                                    },
-                                })
-
-
-
-                                // Redraw the DataTable
-                                table.ajax.reload(null, false);
-                                $('#editModal input').val('');
-                                $('#editModal').offcanvas(
-                                    'hide'
-                                ); // Assuming you want to hide the modal on success
-
-                            },
-                            error: function(error) {
-                                console.error('Error saving changes:', error);
-                            }
-                        });
-                    });
 
                 });
 
