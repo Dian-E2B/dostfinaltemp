@@ -5,11 +5,17 @@
         <title>DOST XI</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <link rel="icon" href="\icons\DOSTLOGOsmall.png" type="image/x-icon" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        <link href="{{ asset('css/all.css') }}">
+        {{-- Datatables css --}}
+        <link href="https://cdn.datatables.net/v/bs5/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/date-1.5.1/fc-4.3.0/fh-3.4.0/r-2.5.0/sc-2.3.0/sp-2.2.0/sl-1.7.0/datatables.min.css" rel="stylesheet">
+        {{-- Jquery Js --}}
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
         <meta name="csrf-token" content="{{ csrf_token() }}" />
-        <link
-            href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.6/b-2.4.2/b-html5-2.4.2/b-print-2.4.2/date-1.5.1/fc-4.3.0/fh-3.4.0/r-2.5.0/sc-2.2.0/sp-2.2.0/sl-1.7.0/datatables.min.css"
-            rel="stylesheet">
-        <link href="{{ asset('css/all.css') }}" rel="stylesheet">
         <style>
             .form-control {
                 color: #000000 !important;
@@ -50,12 +56,10 @@
 
             body {
                 background-color: #dddddd;
-                font-family: "Calibri", sans-serif;
+
             }
 
-            .sidebar {
-                font-size: 12pt;
-            }
+
 
             .action-column {
                 text-align: center !important;
@@ -85,8 +89,7 @@
 
                         <div class="card">
                             <div class="card-body">
-                                <table id="thisdatatable" class="hover table-striped table-hover compact nowrap"
-                                    style="width:100%;">
+                                <table id="thisdatatable" class="hover table-striped table-hover compact nowrap" style="width:100%;">
 
                                     <thead>
                                         <tr>
@@ -151,23 +154,19 @@
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="editModalLabel" style="font-weight: bold">Scholar Details
                             </h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
 
                             <div class="row align-items-center mb-1">
                                 <div class="col-2 customlabel"> <label>ID: </label></div>
-                                <div class="col-4 "> <input class="  form-control  form-control-sm" id="IdField"
-                                        name="IdField" disabled></div>
+                                <div class="col-4 "> <input class="  form-control  form-control-sm" id="IdField" name="IdField" disabled></div>
                                 <div class="col-2 customlabel"> <label>App ID: </label></div>
-                                <div class="col-4"><input class=" form-control  form-control-sm" id="AppIDField"
-                                        name="AppIDField"></div>
+                                <div class="col-4"><input class=" form-control  form-control-sm" id="AppIDField" name="AppIDField"></div>
                             </div>
                             <div class="row align-items-center mb-1">
                                 <div class="col-2 customlabel"> <label>Email: </label></div>
-                                <div class="col-4"> <input class=" form-control   form-control-sm" id="EmailField"
-                                        name="EmailField"></div>
+                                <div class="col-4"> <input class=" form-control   form-control-sm" id="EmailField" name="EmailField"></div>
                                 <div class="col-2 customlabel"> <label>Program: </label></div>
                                 <div class="col-4">
                                     <select name="ProgramField" id="ProgramField" class="form-control form-control-sm">
@@ -180,8 +179,7 @@
                             </div>
                             <div class="row align-items-center mb-1">
                                 <div class="col-2 customlabel"> <label>Surname: </label></div>
-                                <div class="col-4 "> <input class="  form-control  form-control-sm" id="SurnameField"
-                                        name="SurnameField"></div>
+                                <div class="col-4 "> <input class="  form-control  form-control-sm" id="SurnameField" name="SurnameField"></div>
                                 <div class="col-2 customlabel"> <label>Strand: </label></div>
                                 <div class="col-4">
                                     <select name="StrandField" id="StrandField" class="form-control form-control-sm">
@@ -194,20 +192,17 @@
                             </div>
                             <div class="row align-items-center mb-1">
                                 <div class="col-2 customlabel"> <label>Firstname: </label></div>
-                                <div class="col-4"><input class=" form-control  form-control-sm" id="FirstnameField"
-                                        name="FirstnameField"></div>
+                                <div class="col-4"><input class=" form-control  form-control-sm" id="FirstnameField" name="FirstnameField"></div>
 
                                 <div class="col-2 customlabel"> <label>Contact: </label></div>
                                 <div class="col-4">
-                                    <input class=" form-control   form-control-sm" id="ContactField"
-                                        name="ContactField">
+                                    <input class=" form-control   form-control-sm" id="ContactField" name="ContactField">
                                 </div>
                             </div>
 
                             <div class="row align-items-center mb-1">
                                 <div class="col-2 customlabel"> <label>Middlename: </label></div>
-                                <div class="col-4 "> <input class="  form-control  form-control-sm"
-                                        id="MiddlenameField" name="MiddlenameField"></div>
+                                <div class="col-4 "> <input class="  form-control  form-control-sm" id="MiddlenameField" name="MiddlenameField"></div>
                                 <div class="col-2 customlabel"> <label>Gender: </label></div>
                                 <div class="col-4">
                                     <select name="GenderField" id="GenderField" class="form-control form-control-sm">
@@ -233,8 +228,7 @@
 
                             {{-- FOOTER --}}
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary"
-                                    data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                 <button type="button" id="saveChangesBtn" class="btn btn-primary">Save
                                     changes</button>
                             </div>
@@ -249,9 +243,7 @@
         <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
         <script src="{{ asset('js/all.js') }}"></script>
 
-        <script
-            src="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.6/b-2.4.2/b-html5-2.4.2/b-print-2.4.2/date-1.5.1/fc-4.3.0/fh-3.4.0/r-2.5.0/sc-2.2.0/sp-2.2.0/sl-1.7.0/datatables.min.js">
-        </script>
+        <script src="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.6/b-2.4.2/b-html5-2.4.2/b-print-2.4.2/date-1.5.1/fc-4.3.0/fh-3.4.0/r-2.5.0/sc-2.2.0/sp-2.2.0/sl-1.7.0/datatables.min.js"></script>
 
         <script>
             jQuery(document).ready(function($) {

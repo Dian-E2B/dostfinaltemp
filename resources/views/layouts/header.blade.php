@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand navbar-light navbar-bg">
-    <a class="sidebar-toggle js-sidebar-toggle">
-        <i class="hamburger align-self-center"></i>
+    <a class="sidebar-toggle js-sidebar-toggle" style="font-size:27px;">
+        <i class="fad fa-bars" style="--fa-primary-color: #1cb1c4; --fa-secondary-color: #1cb1c4;"></i>
     </a>
 
     <a style="{{ request()->is('viewdocument*') ? '' : 'display:none' }}; border: 1px solid #ccc;" href="{{ url()->previous() }}" class="btn ">

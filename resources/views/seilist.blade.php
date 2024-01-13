@@ -2,7 +2,19 @@
 <html lang="en">
 
     <head>
-        @include('layouts.head')
+        <title>DOST XI</title>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link rel="icon" href="\icons\DOSTLOGOsmall.png" type="image/x-icon" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        <link href="{{ asset('css/all.css') }}">
+        {{-- Datatables css --}}
+        <link href="https://cdn.datatables.net/v/bs5/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/date-1.5.1/fc-4.3.0/fh-3.4.0/r-2.5.0/sc-2.3.0/sp-2.2.0/sl-1.7.0/datatables.min.css" rel="stylesheet">
+        {{-- Jquery Js --}}
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
         <meta name="csrf-token" content="{{ csrf_token() }}" />
         <style>
             .form-control {

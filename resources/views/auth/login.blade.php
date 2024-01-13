@@ -3,7 +3,10 @@
 
     <head>
         <title>DOST XI</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
         <link href="{{ asset('css/all.css') }}">
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 
@@ -18,13 +21,13 @@
             body {
                 background-color: #ffffff;
 
-                background-image: url('{{ asset('icons/Office_bluebackground.jpeg') }}');
+                /* background-image: url('{{ asset('icons/Office_bluebackground.jpeg') }}'); */
                 background-repeat: no-repeat;
                 background-size: 100% 60%;
 
 
                 /* Adjust the width as needed */
-                font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
                 font-weight: 500;
 
 
@@ -189,7 +192,6 @@
         <script>
             function togglePassword() {
                 var passwordField = $('#password');
-                var eyeIcon = $('#eye-icon');
 
                 // Toggle password field visibility
                 var passwordFieldType = passwordField.attr('type');

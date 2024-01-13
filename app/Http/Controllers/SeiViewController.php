@@ -37,7 +37,7 @@ class SeiViewController extends Controller
                 })
                 ->select('seis.*', 'programs.progname', 'genders.gendername')
                 ->get();
-            Debugbar::info($seis);
+            // Debugbar::info($seis);
             return DataTables::of($seis)->make(true);
             // return response()->json(['seis' => $seis]);
         } else {
@@ -50,7 +50,7 @@ class SeiViewController extends Controller
                 })
                 ->select('seis.*', 'programs.progname', 'genders.gendername')
                 ->get();
-            Debugbar::info($seis);
+            // Debugbar::info($seis);
             return DataTables::of($seis)->make(true);
         }
     }
@@ -111,9 +111,9 @@ class SeiViewController extends Controller
             })
             ->select('seis.*', 'programs.progname', 'genders.gendername', DB::raw('COALESCE(lacking, "") as lacking'))
             ->get();
-        Debugbar::info($seis2);
-        return response()->json(['seis2' => $seis2]);
-        //  return DataTables::of($seis2)->make(true);
+        /*  Debugbar::info($seis2); */
+
+        return DataTables::of($seis2)->make(true);
     }
 
     public function edit(Request $request)

@@ -5,18 +5,12 @@
         <title>DOST XI</title>
         <link href="{{ asset('css/all.css') }}">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <link
-            href="https://cdn.datatables.net/v/bs5/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/date-1.5.1/fc-4.3.0/fh-3.4.0/r-2.5.0/sc-2.3.0/sp-2.2.0/sl-1.7.0/datatables.min.css"
-            rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+        <link href="https://cdn.datatables.net/v/bs5/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/date-1.5.1/fc-4.3.0/fh-3.4.0/r-2.5.0/sc-2.3.0/sp-2.2.0/sl-1.7.0/datatables.min.css" rel="stylesheet">
         <style>
             body {
                 background-color: #dddddd;
-                font-family: "Calibri", sans-serif;
-                /*  font-size: 12pt; */
-            }
 
-            .sidebar {
-                font-size: 12pt;
             }
         </style>
     </head>
@@ -59,8 +53,7 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <table id="thisdatatable" style="margin-bottom: 1rem !important;"
-                                        class="table table-striped table-sm">
+                                    <table id="thisdatatable" style="margin-bottom: 1rem !important;" class="table table-striped table-sm">
                                         <thead>
                                             <tr>
                                                 <th>ID</th>
@@ -128,14 +121,8 @@
                                                         @endif
 
                                                         <td class="table-action">
-                                                            <a href="#" style="color: black;"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Temporary lock account	"><i
-                                                                    class="fad fa-user-lock"></i></a>
-                                                            <a style="color: red; margin-left: 8px;" href="#"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Permanently delete account	"><i
-                                                                    class="fas fa-trash"></i></a>
+                                                            <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
+                                                            <a style="color: red; margin-left: 8px;" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Permanently delete account	"><i class="fas fa-trash"></i></a>
                                                         </td>
                                                 @endforeach
                                                 </tr>
@@ -152,19 +139,9 @@
                                                             <strong>{{ $rasp->status_name }}</strong>
                                                         </td>
                                                         <td class="table-action">
-                                                            <a href="#" style="color: black;"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Temporary lock account	"><i
-                                                                    class="fad fa-user-lock"></i></a>
-                                                            <a style="color: red; margin-left: 8px;" href="#"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Permanently delete account"><i
-                                                                    class="fas fa-trash"></i></a>
-                                                            <a href="{{ route('enrollscholartoongoing', ['id' => $rasp->id]) }}"
-                                                                style="color:  black; margin-left: 8px;"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Enroll Scholar"><i class="fas fa-user-check"
-                                                                    style="color: #006f1c;"></i></a>
+                                                            <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
+                                                            <a style="color: red; margin-left: 8px;" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Permanently delete account"><i class="fas fa-trash"></i></a>
+                                                            <a href="{{ route('enrollscholartoongoing', ['id' => $rasp->id]) }}" style="color:  black; margin-left: 8px;" data-bs-toggle="tooltip" data-bs-placement="top" title="Enroll Scholar"><i class="fas fa-user-check" style="color: #006f1c;"></i></a>
                                                         </td>
 
                                                     </tr>
@@ -182,14 +159,8 @@
                                                             <strong>{{ $replyslipsjoinscholarongoing1->status_name }}</strong>
                                                         </td>
                                                         <td class="table-action">
-                                                            <a href="#" style="color: black;"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Temporary lock account	"><i
-                                                                    class="fad fa-user-lock"></i></a>
-                                                            <a style="color: red; margin-left: 8px;" href="#"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Permanently delete account	"><i
-                                                                    class="fas fa-trash"></i></a>
+                                                            <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
+                                                            <a style="color: red; margin-left: 8px;" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Permanently delete account	"><i class="fas fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -206,14 +177,8 @@
                                                             <strong>{{ $replyslipsjoinscholarenrolled1->status_name }}</strong>
                                                         </td>
                                                         <td class="table-action">
-                                                            <a href="#" style="color: black;"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Temporary lock account	"><i
-                                                                    class="fad fa-user-lock"></i></a>
-                                                            <a style="color: red; margin-left: 8px;" href="#"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Permanently delete account	"><i
-                                                                    class="fas fa-trash"></i></a>
+                                                            <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
+                                                            <a style="color: red; margin-left: 8px;" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Permanently delete account	"><i class="fas fa-trash"></i></a>
                                                         </td>
                                                 @endforeach
                                                 </tr>
@@ -230,14 +195,8 @@
                                                             <strong>{{ $replyslipsjoinscholardeferred1->status_name }}</strong>
                                                         </td>
                                                         <td class="table-action">
-                                                            <a href="#" style="color: black;"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Temporary lock account	"><i
-                                                                    class="fad fa-user-lock"></i></a>
-                                                            <a style="color: red; margin-left: 8px;" href="#"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Permanently delete account	"><i
-                                                                    class="fas fa-trash"></i></a>
+                                                            <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
+                                                            <a style="color: red; margin-left: 8px;" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Permanently delete account	"><i class="fas fa-trash"></i></a>
 
                                                         </td>
                                                     </tr>
@@ -255,14 +214,8 @@
                                                             <strong>{{ $replyslipsjoinscholarLOA1->status_name }}</strong>
                                                         </td>
                                                         <td class="table-action">
-                                                            <a href="#" style="color: black;"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Temporary lock account	"><i
-                                                                    class="fad fa-user-lock"></i></a>
-                                                            <a style="color: red; margin-left: 8px;" href="#"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Permanently delete account	"><i
-                                                                    class="fas fa-trash"></i></a>
+                                                            <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
+                                                            <a style="color: red; margin-left: 8px;" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Permanently delete account	"><i class="fas fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -288,18 +241,9 @@
                                                             <strong>{{ $seisterminated1->status_name }}</strong>
                                                         </td>
                                                         <td class="table-action">
-                                                            <a href="#" style="color: black;"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Temporary lock account	"><i
-                                                                    class="fad fa-user-lock"></i></a>
-                                                            <a style="color: red; margin-left: 8px;" href="#"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Permanently delete account	"><i
-                                                                    class="fas fa-trash"></i></a>
-                                                            <a style="color: red; margin-left: 8px;" href="#"
-                                                                data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                title="Permanently delete account	"><i
-                                                                    class="fas fa-trash"></i></a>
+                                                            <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
+                                                            <a style="color: red; margin-left: 8px;" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Permanently delete account	"><i class="fas fa-trash"></i></a>
+                                                            <a style="color: red; margin-left: 8px;" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Permanently delete account	"><i class="fas fa-trash"></i></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -326,9 +270,7 @@
     <script src="{{ asset('js/all.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
-    <script
-        src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/date-1.5.1/fc-4.3.0/fh-3.4.0/r-2.5.0/sc-2.3.0/sp-2.2.0/sl-1.7.0/datatables.min.js">
-    </script>
+    <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/dt-1.13.8/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/date-1.5.1/fc-4.3.0/fh-3.4.0/r-2.5.0/sc-2.3.0/sp-2.2.0/sl-1.7.0/datatables.min.js"></script>
     <script>
         jQuery(document).ready(function($) {
             var table = $('#thisdatatable').DataTable({});
