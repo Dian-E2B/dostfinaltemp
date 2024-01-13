@@ -148,5 +148,5 @@ Route::POST('/savepdfclearance', [\App\Http\Controllers\StudentViewController::c
 
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::post('/admin/dashboardadmin', [\App\Http\Controllers\AdminController::class, 'index'])->name('dashboardadmin');
+    Route::get('/admin/dashboardadmin', [\App\Http\Controllers\AdminController::class, 'index'])->name('dashboardadmin');
 });

@@ -3,7 +3,7 @@
 
     <head>
         <title>DOST XI</title>
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+       s
         <link rel="icon" href="\icons\DOSTLOGOsmall.png" type="image/x-icon" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
