@@ -3,6 +3,7 @@
 
     <head>
         <title>DOST XI</title>
+        <link rel="icon" href="\icons\DOSTLOGOsmall.png" type="image/x-icon" />
         <link href="{{ asset('css/all.css') }}">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -73,7 +74,7 @@
                                                 @foreach ($seisallstatus as $seisallstatus1)
                                                     <tr>
                                                         <td>{{ $seisallstatus1->id }}</td>
-                                                        <td>{{ $seisallstatus1->year }}</td>
+
                                                         <td>{{ $seisallstatus1->year }}</td>
                                                         <td>{{ $seisallstatus1->lname }},
                                                             {{ $seisallstatus1->fname }}
@@ -127,16 +128,24 @@
                                                 @endforeach
                                                 </tr>
                                             @elseif(request()->is('accesscontrolpending'))
-                                                @foreach ($replyslipsandscholarjoinpending as $rasp)
+                                                replyslipsandscholarjoinpending @foreach ($replyslipsandscholarjoinpending as $rasp)
                                                     <tr>
 
-                                                        <td>{{ $rasp->sei_id }}</td>
+                                                        <td>{{ $rasp->id }}</td>
+                                                        <td>{{ $rasp->year }}</td>
                                                         <td>{{ $rasp->lname }},
                                                             {{ $rasp->fname }}
                                                             {{ $rasp->mname }} </td>
+                                                        <td>
+                                                            @if ($rasp->gender_id == 1)
+                                                                F
+                                                            @else
+                                                                M
+                                                            @endif
+                                                        </td>
                                                         <td class="">{{ $rasp->email }}</td>
                                                         <td style="color:blue">
-                                                            <strong>{{ $rasp->status_name }}</strong>
+                                                            <strong>Pending</strong>
                                                         </td>
                                                         <td class="table-action">
                                                             <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
@@ -146,36 +155,23 @@
 
                                                     </tr>
                                                 @endforeach
-                                            @elseif(request()->is('accesscontrolongoing'))
-                                                @foreach ($replyslipsjoinscholarongoing as $replyslipsjoinscholarongoing1)
-                                                    <tr>
-                                                        <td>{{ $replyslipsjoinscholarongoing1->sei_id }}</td>
-                                                        <td>{{ $replyslipsjoinscholarongoing1->lname }},
-                                                            {{ $replyslipsjoinscholarongoing1->fname }}
-                                                            {{ $replyslipsjoinscholarongoing1->mname }} </td>
-                                                        <td class="">{{ $replyslipsjoinscholarongoing1->email }}
-                                                        </td>
-                                                        <td style="color:deepskyblue">
-                                                            <strong>{{ $replyslipsjoinscholarongoing1->status_name }}</strong>
-                                                        </td>
-                                                        <td class="table-action">
-                                                            <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
-                                                            <a style="color: red; margin-left: 8px;" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Permanently delete account	"><i class="fas fa-trash"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
                                             @elseif(request()->is('accesscontrolenrolled'))
                                                 @foreach ($replyslipsjoinscholarenrolled as $replyslipsjoinscholarenrolled1)
                                                     <tr>
-                                                        <td>{{ $replyslipsjoinscholarenrolled1->sei_id }}</td>
+                                                        <td>{{ $replyslipsjoinscholarenrolled1->id }}</td>
+                                                        <td>{{ $replyslipsjoinscholarenrolled1->year }}</td>
                                                         <td>{{ $replyslipsjoinscholarenrolled1->lname }},
                                                             {{ $replyslipsjoinscholarenrolled1->fname }}
                                                             {{ $replyslipsjoinscholarenrolled1->mname }} </td>
-                                                        <td class="">{{ $replyslipsjoinscholarenrolled1->email }}
+                                                        <td>
+                                                            @if ($replyslipsjoinscholarenrolled1->gender_id == 1)
+                                                                F
+                                                            @else
+                                                                M
+                                                            @endif
                                                         </td>
-                                                        <td style="color:green">
-                                                            <strong>{{ $replyslipsjoinscholarenrolled1->status_name }}</strong>
-                                                        </td>
+                                                        <td class="">{{ $replyslipsjoinscholarenrolled1->email }}</td>
+                                                        <td style="color:green"><strong>Enrolled</strong></td>
                                                         <td class="table-action">
                                                             <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
                                                             <a style="color: red; margin-left: 8px;" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Permanently delete account	"><i class="fas fa-trash"></i></a>
@@ -186,13 +182,21 @@
                                                 @foreach ($replyslipsjoinscholardeferred as $replyslipsjoinscholardeferred1)
                                                     <tr>
                                                         <td>{{ $replyslipsjoinscholardeferred1->id }}</td>
+                                                        <td>{{ $replyslipsjoinscholardeferred1->year }}</td>
                                                         <td>{{ $replyslipsjoinscholardeferred1->lname }},
                                                             {{ $replyslipsjoinscholardeferred1->fname }}
                                                             {{ $replyslipsjoinscholardeferred1->mname }} </td>
+                                                        <td>
+                                                            @if ($replyslipsjoinscholardeferred1->gender_id == 1)
+                                                                F
+                                                            @else
+                                                                M
+                                                            @endif
+                                                        </td>
                                                         <td class="">{{ $replyslipsjoinscholardeferred1->email }}
                                                         </td>
-                                                        <td style="color:green">
-                                                            <strong>{{ $replyslipsjoinscholardeferred1->status_name }}</strong>
+                                                        <td style="color:rgb(245, 139, 0)">
+                                                            <strong>Deffered</strong>
                                                         </td>
                                                         <td class="table-action">
                                                             <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
@@ -205,13 +209,21 @@
                                                 @foreach ($replyslipsjoinscholarLOA as $replyslipsjoinscholarLOA1)
                                                     <tr>
                                                         <td>{{ $replyslipsjoinscholarLOA1->id }}</td>
+                                                        <td>{{ $replyslipsjoinscholarLOA1->year }}</td>
                                                         <td>{{ $replyslipsjoinscholarLOA1->lname }},
                                                             {{ $replyslipsjoinscholarLOA1->fname }}
                                                             {{ $replyslipsjoinscholarLOA1->mname }} </td>
+                                                        <td>
+                                                            @if ($replyslipsjoinscholarLOA1->gender_id == 1)
+                                                                F
+                                                            @else
+                                                                M
+                                                            @endif
+                                                        </td>
                                                         <td class="">{{ $replyslipsjoinscholarLOA1->email }}
                                                         </td>
-                                                        <td style="color:green">
-                                                            <strong>{{ $replyslipsjoinscholarLOA1->status_name }}</strong>
+                                                        <td style="color:rgb(190, 207, 29)">
+                                                            <strong>LOA</strong>
                                                         </td>
                                                         <td class="table-action">
                                                             <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
@@ -233,12 +245,11 @@
                                                             @else
                                                                 M
                                                             @endif
-                                                            {{--  {{ $seisterminated1->gender_id }} --}}
                                                         </td>
                                                         <td class="">
                                                             {{ $seisterminated1->email }}</td>
-                                                        <td style="color:green">
-                                                            <strong>{{ $seisterminated1->status_name }}</strong>
+                                                        <td style="color:rgb(223, 3, 3)90, 207, 29)">
+                                                            <strong>Terminated</strong>
                                                         </td>
                                                         <td class="table-action">
                                                             <a href="#" style="color: black;" data-bs-toggle="tooltip" data-bs-placement="top" title="Temporary lock account	"><i class="fad fa-user-lock"></i></a>
