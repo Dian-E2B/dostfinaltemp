@@ -12,4 +12,9 @@ class AdminController extends Controller
     {
         return view('admin.dashboardadmin');
     }
+
+    public function indexadminapproval()
+    {
+        return view('admin.adminregapproval');
+    }
 }

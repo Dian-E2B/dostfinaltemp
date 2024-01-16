@@ -3,7 +3,6 @@
 
     <head>
         <title>DOST XI</title>
-       s
         <link rel="icon" href="\icons\DOSTLOGOsmall.png" type="image/x-icon" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
@@ -13,7 +12,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
 
         <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
 
