@@ -9,6 +9,7 @@ use App\Models\Scholars;
 use App\Models\Sei;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class StudentViewController extends Controller
@@ -69,6 +70,19 @@ class StudentViewController extends Controller
     public function requestclearanceview()
     {
         return view('student.requestclearance');
+    }
+
+    public function viewsubmittedgrade()
+    {
+        $userId = auth()->id();
+        $studentuser = Student::where('id', $userId)->first();
+        $scholarId = $studentuser->scholar_id;
+        $cogs = DB::table('cogs')
+            ->join('cogdetails', 'cogs.id', '=', 'cogdetails.cog_id')
+            ->where('cogs.scholar_id', $scholarId)
+            ->select('cogs.*', 'cogdetails.*', /* add other columns as needed */)
+            ->get();
+        return view('student.viewsubmittedgrade', compact('cogs'));
     }
 
 

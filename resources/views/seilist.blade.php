@@ -96,6 +96,12 @@
                 @enderror
 
 
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+
                 <main class="content" style="padding:0.5rem 0.5rem 0.5rem; !important;">
                     <div style="background-color: #dddddd" class="container-fluid p-0">
 
@@ -105,7 +111,7 @@
                                 {{-- DROPDOWN FILTER --}}
                                 <div class="row">
                                     <div class="col">
-                                        <div class="mb-4">
+                                        <div class="">
                                             <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="fas fa-filter"></i>
                                             </button>
@@ -127,55 +133,60 @@
                                         </div>
                                     </div>
 
+
                                 </div>
 
-
+                                <div class="row mt-3" style="font-size: 17px;">
+                                    <strong><i class="fas fa-circle" style="color: #194903;"></i><span style="color:#194903">: Notified</span></strong>
+                                </div>
                                 {{-- TABLE --}}
-                                <table id="thisdatatable" cellspacing="0" class="table-striped display nowrap" style="width:100%;">
+                                <div class="mt-3">
+                                    <table id="thisdatatable" cellspacing="0" class="table-striped display nowrap" style="width:100%;">
 
-                                    <thead>
-                                        <tr>
+                                        <thead>
+                                            <tr>
 
 
 
-                                            <th>Surname</th>
-                                            <th>Firstname</th>
-                                            <th>Middlename</th>
-                                            <th>SPAS NO.</th>
-                                            <th>Email</th>
-                                            <th style="  padding-left: 5px !important; padding-right: 5px !important;">
-                                                <span></span>App ID
-                                            </th>
-                                            <th style="  padding-left: 5px !important; padding-right: 5px !important;">
-                                                <span style="display: none">Strand </span>
-                                            </th>
-                                            <th style="  padding-left: 5px !important; padding-right: 5px !important;">
-                                                <span>Program </span>
-                                            </th>
-                                            <th>Sex</th>
-                                            <th>Bithdate</th>
-                                            <th>Contact</th>
-                                            <th>House number</th>
-                                            <th>Street</th>
-                                            <th>Village</th>
-                                            <th>Barangay</th>
-                                            <th style="  padding-left: 5px !important; padding-right: 5px !important;">
-                                                <span> Municipality </span>
-                                            </th>
-                                            <th>Province</th>
-                                            <th>Zipcode</th>
-                                            <th>District</th>
-                                            <th>Region</th>
-                                            <th>HSname</th>
-                                            <th>Remarks</th>
-                                            <th>Email</th>
-                                            <th>Action</th>
+                                                <th>Surname</th>
+                                                <th>Firstname</th>
+                                                <th>Middlename</th>
+                                                <th>SPAS NO.</th>
+                                                <th>Email</th>
+                                                <th style="  padding-left: 5px !important; padding-right: 5px !important;">
+                                                    <span></span>App ID
+                                                </th>
+                                                <th style="  padding-left: 5px !important; padding-right: 5px !important;">
+                                                    <span style="display: none">Strand </span>
+                                                </th>
+                                                <th style="  padding-left: 5px !important; padding-right: 5px !important;">
+                                                    <span>Program </span>
+                                                </th>
+                                                <th>Sex</th>
+                                                <th>Bithdate</th>
+                                                <th>Contact</th>
+                                                <th>House number</th>
+                                                <th>Street</th>
+                                                <th>Village</th>
+                                                <th>Barangay</th>
+                                                <th style="  padding-left: 5px !important; padding-right: 5px !important;">
+                                                    <span> Municipality </span>
+                                                </th>
+                                                <th>Province</th>
+                                                <th>Zipcode</th>
+                                                <th>District</th>
+                                                <th>Region</th>
+                                                <th>HSname</th>
+                                                <th>Remarks</th>
+                                                <th>Email</th>
+                                                <th>Action</th>
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
 
@@ -401,7 +412,9 @@
                         ],
                         "createdRow": function(row, data, dataIndex) {
                             if (data.scholar_status_id != '0') {
-                                $(row).find('td:first-child').css('color', 'green');
+                                $(row).find('td:first-child')
+                                    .css('color', 'green')
+                                    .css('font-weight', 'bold');
                                 // console.log("Row with value '0' found.");
                             }
                             // alert();

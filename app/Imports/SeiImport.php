@@ -13,6 +13,7 @@ use Maatwebsite\Excel\Concerns\WithBatchInserts;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Illuminate\Support\Facades\dd;
 use PhpParser\Node\Stmt\TryCatch;
+use PhpParser\Node\Stmt\While_;
 use Termwind\Components\Dd as ComponentsDd;
 
 use function Psy\debug;
@@ -27,15 +28,51 @@ class SeiImport implements ToModel, WithBatchInserts
 
         $existingRecord = Sei::where('spasno', $row[0])->first();
 
-
+        $messageShown = false;
         // Check if the data in the first column (index 0) starts with "U"
-        if (!str_starts_with($row[0], 'U')) {
-            // If it doesn't start with "U", return null to skip inserting this row
-            return null;
-        } elseif ($existingRecord) {
+        $hasError = false;
 
+        if ((
+            $row[0] == "SPAS NO."
+            && $row[1] == "AppID"
+            && $row[2] == "STRAND"
+            && $row[3] == "program"
+            && $row[4] == "last name"
+            && $row[5] == "first name"
+            && $row[6] == "middle name"
+            && $row[7] == "suffix"
+            && $row[8] == "sex"
+            && $row[9] == "birthday"
+            && $row[10] == "email address"
+            && $row[11] == "contact number"
+            && $row[12] == "house number"
+            && $row[13] == "street"
+            && $row[14] == "village"
+            && $row[15] == "barangay"
+            && $row[16] == "municipality"
+            && $row[17] == "province"
+            && $row[18] == "zipcode"
+            && $row[19] == "district"
+            && $row[20] == "region"
+            && $row[21] == "hsname"
+            && $row[22] == "lacking"
+            && $row[23] == "remarks"
+        )) {
+
+            if (!str_starts_with($row[0], 'U')) {
+                // If it doesn't start with "U", return null to skip inserting this row
+                return null;
+            } elseif ($existingRecord) {
+                return null;
+            }
+        } else {
+            /*  @dd("saba", $row); */
+            session()->flash('error', 'A column has been deleted. Please check the file');
             return null;
         }
+
+
+
 
 
         $year = substr($row[0], 2, 4);
@@ -58,7 +95,13 @@ class SeiImport implements ToModel, WithBatchInserts
         $excelBaseDate = 25569; // Excel's base date (January 1, 1900) EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 
         // Convert Excel serial number to Unix timestamp
-        $unixTimestamp = ($serialNumber - $excelBaseDate) * 86400; // 86400 seconds in a day
+
+        try {
+            $unixTimestamp = ($serialNumber - $excelBaseDate) * 86400; // 86400 seconds in a day
+        } catch (\Error $e) {
+            flash()->addError('A column has been deleted please check the file');
+            return redirect()->back();
+        }
 
         // Convert Unix timestamp to a human-readable date
         $excelDate = date('Y-m-d', $unixTimestamp);
@@ -66,7 +109,6 @@ class SeiImport implements ToModel, WithBatchInserts
         //dd($excelDate);
         $lackingValue = $row[22] !== null && trim($row[22]) !== '' ? $row[22] : null;
         try {
-
             // SEIS TABLE //MODIFIED NOV 30, 2023
             $sei = new Sei([
                 'spasno' => $row[0],
@@ -105,8 +147,9 @@ class SeiImport implements ToModel, WithBatchInserts
             // }
 
             $sei->save();
-        } catch (\Exception $e) {
-            flash()->addError('Error' . $e->getMessage());
+        } catch (\Throwable $t) {
+            flash()->addError('An error occurred: ' . $t->getMessage());
+            return redirect()->back();
         }
 
 

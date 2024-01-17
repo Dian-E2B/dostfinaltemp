@@ -128,7 +128,8 @@ require __DIR__ . '/studentauth.php';
 
 Route::get('student/dashboard', [StudentViewController::class, 'index'])
     ->middleware(['auth:student', 'verified'])->name('student.dashboard');
-
+Route::get('student/viewsubmittedgrade', [StudentViewController::class, 'viewsubmittedgrade'])
+    ->middleware(['auth:student', 'verified'])->name('student.viewsubmittedgrade');
 Route::get('student/replyslipview', [StudentViewController::class, 'replyslipview'])
     ->middleware(['auth:student', 'verified'])->name('student.replyslipview');
 Route::get('student/requestclearanceview', [StudentViewController::class, 'requestclearanceview'])

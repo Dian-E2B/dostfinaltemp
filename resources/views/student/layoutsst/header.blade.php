@@ -13,6 +13,7 @@
                 {{-- <a class="dropdown-item" href="https://adminkit.io/docs/" target="_blank"><i class="align-middle me-1" data-feather="book-open"></i>
                     Documentation</a> --}}
                 <a class="dropdown-item" href="{{ route('student/gradeinput') }}"><i class="align-middle me-1 fas fa-file-certificate"></i> Submit Grades</a>
+                <a class="dropdown-item" href="{{ route('student.viewsubmittedgrade') }}"><i class="align-middle me-1 fas fa-file-certificate"></i> View Submitted Grades</a>
             </div>
         </li>
     </ul>
