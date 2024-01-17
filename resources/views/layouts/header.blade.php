@@ -38,7 +38,7 @@
 
     <div class="navbar-collapse collapse">
 
-        <section style="text-align: left !important;">
+        {{--  <section style="text-align: left !important;">
             <ul class="navbar-nav d-1 d-lg-flex">
 
                 <li class="nav-item dropdown">
@@ -53,7 +53,7 @@
                     </div>
                 </li>
             </ul>
-        </section>
+        </section> --}}
 
         <ul class="navbar-nav navbar-align">
             <li class="nav-item dropdown">
@@ -209,12 +209,11 @@
                     <span class="text-dark">{{ Auth::user()->username }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end">
-                    <a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
-                    <a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
-                    <div class="dropdown-divider"></div>
+
+
+
+
+
                     {{-- LOGOUT --}}
                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log out</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

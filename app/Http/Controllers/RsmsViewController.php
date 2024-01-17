@@ -173,7 +173,7 @@ class RsmsViewController extends Controller //OR ONGOING
     public function getscholargrades($number)
     {
         $cogdata = Cogdetails::find($number);
-        Debugbar::info($number);
+        /*       Debugbar::info($number); */
 
         if ($cogdata) {
             return response()->json($cogdata);
@@ -183,8 +183,8 @@ class RsmsViewController extends Controller //OR ONGOING
     public function getdocumentsdata($number)
     {
         $Requestdocs = Requestdocs::where('scholar_id', $number)->get();
-        Debugbar::info($number);
-        Debugbar::info($Requestdocs);
+        /* Debugbar::info($number); */
+        /*   Debugbar::info($Requestdocs); */
 
         if ($Requestdocs) {
             return DataTables::of($Requestdocs)->make(true);

@@ -128,7 +128,7 @@ class StudentViewController extends Controller
                     ->position('x', 'center')
                     ->position('y', 'top')
                     ->duration(2000) // 2 seconds
-                    ->addSuccess('Clearance has been uploaded');
+                    ->addSuccess('File has been uploaded');
             }
 
 

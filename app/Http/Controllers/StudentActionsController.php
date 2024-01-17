@@ -113,9 +113,6 @@ class StudentActionsController extends Controller
             }
         }
 
-
-
-
         notyf()
             ->position('x', 'center')
             ->position('y', 'top')

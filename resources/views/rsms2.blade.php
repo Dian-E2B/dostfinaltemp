@@ -155,7 +155,7 @@
                                             <th style="width:100px !important;"><span style="" hidden>MF</span>
                                             </th>
                                             <th style="width:100px !important;"><span style="" hidden>Program</span></th>
-                                            <th>School</th>
+                                            <th style="width:100px !important;"><span style="" hidden>School</span></th>
                                             <th>Course</th>
                                             <th>
                                                 @if ($semester == 1)
@@ -365,7 +365,7 @@
                                             <input class="form-control form-control-sm" id="hvcNotesField" name="hvcNotesField">
                                         </td>
                                     </tr>
-                                    <tr style="">
+                                    <tr style="display:none">
                                         <th class="canvasth"> <strong>SEMESTER :</strong></th>
                                         <td class="canvastable">
                                             <input class="form-control form-control-sm" id="semesterField" name="semesterField">
@@ -490,6 +490,13 @@
                         },
                         {
                             data: 'SCHOOL',
+                            render: function(data, type, row) {
+                                // Apply custom styles to the email address
+                                var styledschool = '<span style="padding-right: 90px;">' + data +
+                                    '</span>';
+                                return styledschool;
+                            }
+
 
                         },
                         {
@@ -574,7 +581,7 @@
                             searchable: false,
                         },
                         {
-                            targets: [0, 3, 5, 19, 4],
+                            targets: [0, 3, 5, 19, 4, 6],
                             orderable: false,
                         },
 
@@ -596,7 +603,7 @@
 
 
                     initComplete: function() {
-                        this.api().columns([5, 4]).every(function(d) {
+                        this.api().columns([5, 4, 6]).every(function(d) {
                             var column = this;
                             var select = $(
                                     "<select style=\"padding-top:1px !important; padding-bottom:1px !important;\" class=\"form-control\"><option value=\"\">" +

@@ -89,7 +89,7 @@
                                                                         </option>{{-- 0-Summer | 1-First Sem | 2-Second Sem | 3-Third Sem --}}
                                                                         <option value="1">1st Semester</option>
                                                                         <option value="2">2nd Semester</option>
-                                                                        <option value="0">Summer</option>
+                                                                        <option value="3">Summer</option>
                                                                     </select>
                                                                 </label>
                                                             </div>

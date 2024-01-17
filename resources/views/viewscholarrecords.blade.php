@@ -62,13 +62,13 @@
                                             <li class="nav-item"><a class="nav-link tablinks" href="{{ url()->previous() }}"><i class="fas fa-arrow-square-left"></i></a></li>
                                             <li class="nav-item"><a class="nav-link tablinks active" href="#tab-1" data-bs-toggle="tab" role="tab">Grading</a></li>
                                             <li class="nav-item"><a class="nav-link tablinks" id="tab2" href="#tab-2" data-bs-toggle="tab" role="tab">COR</a></li>
-                                            <li class="nav-item"><a class="nav-link tablinks" id="tab3" href="#tab-3" data-bs-toggle="tab" role="tab">Documents</a></li>
+                                            <li class="nav-item"><a class="nav-link tablinks" id="tab3" href="#tab-3" data-bs-toggle="tab" role="tab"></a></li>
                                         </ul>
                                         <div class="tab-content">
                                             <div class="tab-pane active" id="tab-1" role="tabpanel">
                                                 @foreach ($resultArray as $year => $semesters)
                                                     <div class="row">
-                                                        <div style="text-align: center">SCHOOL YEAR {{ $year }} - {{ $year + 1 }}</div>
+                                                        <div style="text-align: center"><strong>SCHOOL YEAR {{ $year }} - {{ $year + 1 }}</strong></div>
                                                         @foreach ($semesters as $semester => $data)
                                                             <div class="col">
                                                                 <div style="text-align: center">

@@ -55,7 +55,7 @@
                                                     <th style="width:20%">Email</th>
                                                     <th class="d-none d-md-table-cell" style="width:25%">Date of Birth
                                                     </th>
-                                                    <th>Actions</th>
+                                                    {{--   <th>Actions</th> --}}
                                                 </tr>
                                             </thead>
 
@@ -69,10 +69,10 @@
                                                             <td>{{ $replyslipsandscholarjoinpending1->email }}</td>
                                                             <td class="d-none d-md-table-cell">
                                                                 {{ $replyslipsandscholarjoinpending1->bday }}</td>
-                                                            <td class="table-action">
+                                                            {{--  <td class="table-action">
                                                                 <a href=""><i class="fas fa-user-edit"></i></a>
                                                                 <a href=""></a>
-                                                            </td>
+                                                            </td> --}}
 
                                                         </tr>
                                                     @endforeach
@@ -145,7 +145,7 @@
                                                                                             Name
                                                                                             and Signature</p>
                                                                                         <img style="max-height: 350px; max-width:350px; " src="{{ $replyslipsandscholarjoinaccepted1->signature }}" alt="blank">
-                                                                                        @dd($replyslipsandscholarjoinaccepted1->signature);
+
                                                                                     </div>
                                                                                     <div class="col-md-6" style="margin-top: 15px;">
                                                                                         <p class="mb-0">

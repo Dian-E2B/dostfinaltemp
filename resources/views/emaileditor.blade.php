@@ -10,7 +10,6 @@
 
 
         <script src="https://cdn.ckeditor.com/ckeditor5/39.0.2/decoupled-document/ckeditor.js"></script>
-
     </head>
 
     <body data-theme="light" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
