@@ -58,6 +58,7 @@ class SeiViewController extends Controller
 
     public function getOngoingSeilistById($number)
     {
+
         $result = Sei::where('id', $number)->first();
         if (!$result) {
             return response()->json(['error' => 'Record not found'], 404);
@@ -82,16 +83,24 @@ class SeiViewController extends Controller
 
     public function store(Request $request)
     {
-        try {
-
-            Excel::import(new SeiImport(), $request->file(key: "excel_file"));
+        $firstRow = Excel::toArray(new SeiImport(), $request->file('excel_file')->getRealPath(), null, \Maatwebsite\Excel\Excel::XLSX)[0][0];
+        if ($firstRow !== ['SPAS NO.', 'AppID', 'STRAND', 'program', 'last name', 'first name', 'middle name', 'suffix', 'sex', 'birthday', 'email address', 'contact number', 'house number', 'street', 'village', 'barangay', 'municipality', 'province', 'zipcode', 'district', 'region', 'hsname', 'lacking', 'remarks']) {
+            // Redirect back with an error message
+            session()->flash('error', 'A column has been deleted or added. Please check the file');
             return redirect()->back();
-        } catch (\Exception $e) {
-            // Handle the error
-            // You can log the error, display a user-friendly message, or take other actions
-            $errorMessage = $e->getMessage();
-            // flash()->addError('There is a problem during upload ');
-            echo 'An error occurred: ' . $errorMessage;
+        } else {
+            try {
+
+                Excel::import(new SeiImport(), $request->file(key: "excel_file"));
+                flash()->addSuccess('Records successfully Imported');
+                return redirect()->back();
+            } catch (\Exception $e) {
+                // Handle the error
+                // You can log the error, display a user-friendly message, or take other actions
+                $errorMessage = $e->getMessage();
+                // flash()->addError('There is a problem during upload ');
+                echo 'An error occurred: ' . $errorMessage;
+            }
         }
     }
 
