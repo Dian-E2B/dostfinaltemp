@@ -7,6 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>DOST</title>
+        <style>
+            table,
+            td,
+            th {
+                border: 3px solid black;
+                border-color: black;
+            }
+        </style>
     </head>
 
     <body data-theme="light" data-layout="fluid" data-sidebar-position="left" data-sidebar-layout="default">
@@ -18,7 +26,7 @@
                     <div class="container-fluid p-0">
                         <div class="card">
                             <div class="card-body">
-                                <table id="thisdatatable" class="hover table table-striped table-hover compact nowrap" style="width:100%;">
+                                <table id="thisdatatable" class="hover table table-bordered compact nowrap" style="width:100%; ">
                                     <thead>
                                         <tr>
                                             <th>Academic Year</th>
@@ -26,19 +34,35 @@
                                             <th>Subjectname</th>
                                             <th>Grade</th>
                                             <th>Units</th>
-                                            <!-- Add other columns as needed -->
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($cogs as $cog)
                                             <tr>
-                                                <td>{{ $cog->startyear }} - {{ $cog->startyear + 1 }}</td>
-                                                <td>{{ $cog->semester }}</td>
-                                                <td>{{ $cog->subjectname }}</td>
-                                                <td>{{ $cog->grade }}</td>
-                                                <td> {{ $cog->unit }}</td>
-                                                <!-- Add other columns as needed -->
+                                                <td rowspan="{{ count(explode(',', $cog->Subjectname)) }}">{{ $cog->startyear }}- {{ $cog->startyear + 1 }}</td>
+                                                <td rowspan="{{ count(explode(',', $cog->Subjectname)) }}">{{ $cog->semester }}</td>
+
+                                                {{-- Explode concatenated values back into arrays --}}
+                                                @php
+                                                    $subjectnames = explode(',', $cog->Subjectname);
+                                                    $grades = explode(',', $cog->Grade);
+                                                    $units = explode(',', $cog->Units);
+                                                @endphp
+
+                                                {{-- Display first row --}}
+                                                <td>{{ $subjectnames[0] }}</td>
+                                                <td>{{ $grades[0] }}</td>
+                                                <td>{{ $units[0] }}</td>
                                             </tr>
+
+                                            {{-- Display remaining rows --}}
+                                            @for ($i = 1; $i < count($subjectnames); $i++)
+                                                <tr>
+                                                    <td>{{ $subjectnames[$i] }}</td>
+                                                    <td>{{ $grades[$i] }}</td>
+                                                    <td>{{ $units[$i] }}</td>
+                                                </tr>
+                                            @endfor
                                         @endforeach
                                     </tbody>
                                 </table>

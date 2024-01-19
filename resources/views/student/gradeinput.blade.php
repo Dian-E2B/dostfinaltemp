@@ -83,8 +83,8 @@
                                                 <div class="card-body">
 
                                                     <div class="row">
-                                                        <div class="col-md-3">
-                                                            <div class="mb-3">
+                                                        <div class="col-12">
+                                                            <div class="mb-4">
                                                                 <label>
                                                                     <select id="semesterSelect" name="semester" class="form-control" required>
                                                                         <option value="">Choose Semester:
@@ -97,7 +97,7 @@
                                                             </div>
 
                                                         </div>
-                                                        <div class="col-md-9">
+                                                        <div class="col-12 mb-3">
                                                             <div class="d-flex align-items-center">
                                                                 <label for="inputSchoolyear" class="me-2">School Year:</label>
                                                                 <input style="max-width: 80px;" required type="text" name="startyear" placeholder="yyyy" class="numeric-input form-control me-2">

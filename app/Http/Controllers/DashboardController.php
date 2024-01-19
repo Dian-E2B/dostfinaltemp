@@ -77,6 +77,7 @@ class DashboardController extends Controller
             /* ongcountbyProvinces */
             $ongoingSchools = DB::table('ongoing')
                 ->select('school', DB::raw('count(*) as countSchool'))
+                ->whereNotNull('school')
                 ->groupBy('school')
                 ->get();
             $dataSchoool = [
@@ -119,8 +120,6 @@ class DashboardController extends Controller
         $endYear = $request->input('endyear');
 
         if ($startYear) {
-
-
             $ongoingProvince = DB::table('seis')
                 ->select('PROVINCE', DB::raw('COUNT(*) as countProvince'))
                 ->groupBy('PROVINCE')
@@ -167,7 +166,7 @@ class DashboardController extends Controller
             $ongoingProvince = DB::table('seis')
                 ->select('PROVINCE', DB::raw('COUNT(*) as countProvince'))
                 ->groupBy('PROVINCE')
-                ->where('year', $startYear)
+                ->whereBetween('year', [$startYear, $endYear])
                 ->get();
             $dataProvinces = [
                 'labelsprovince' => $ongoingProvince->pluck('PROVINCE'),
@@ -200,7 +199,7 @@ class DashboardController extends Controller
             $ongoingMovements = DB::table('seis')
                 ->join('scholar_statuses', 'seis.scholar_status_id', '=', 'scholar_statuses.id')
                 ->select('scholar_statuses.status_name', DB::raw('count(*) as countMovement'))
-                ->where('year', $startYear)
+                ->whereBetween('year', [$startYear, $endYear])
                 ->groupBy('scholar_statuses.status_name')
                 ->get();
             $dataMovements  = [

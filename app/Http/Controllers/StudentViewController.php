@@ -80,7 +80,14 @@ class StudentViewController extends Controller
         $cogs = DB::table('cogs')
             ->join('cogdetails', 'cogs.id', '=', 'cogdetails.cog_id')
             ->where('cogs.scholar_id', $scholarId)
-            ->select('cogs.*', 'cogdetails.*', /* add other columns as needed */)
+            ->select(
+                'cogs.startyear',
+                'cogs.semester',
+                DB::raw('GROUP_CONCAT(cogdetails.subjectname) AS Subjectname'),
+                DB::raw('GROUP_CONCAT(cogdetails.grade) AS Grade'),
+                DB::raw('GROUP_CONCAT(cogdetails.unit) AS Units')
+            )
+            ->groupBy('cogs.startyear', 'cogs.semester')
             ->get();
         return view('student.viewsubmittedgrade', compact('cogs'));
     }

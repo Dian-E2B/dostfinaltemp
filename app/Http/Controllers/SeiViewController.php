@@ -103,6 +103,7 @@ class SeiViewController extends Controller
 
     public function seilistviewajaxpotential()
     {
+
         $seis2 = Sei::join('programs', 'seis.program_id', '=', 'programs.id')
             ->join('genders', 'seis.gender_id', '=', 'genders.id')
             ->where(function ($query) {

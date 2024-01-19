@@ -17,7 +17,7 @@
             <li class="sidebar-header">
                 Main Pages
             </li>
-            <li class="{{ request()->is('dashboard') ? 'sidebar-item active' : 'sidebar-item' }}">
+            <li class="{{ request()->is('dashboard') || request()->is('getallyearfilter') ? 'sidebar-item active' : 'sidebar-item' }}">
                 <a class='sidebar-link' href='{{ route('dashboard') }}'>
                     <i class="align-middle" data-feather="pie-chart"></i> <span class="align-middle">Dashboard</span>
                 </a>

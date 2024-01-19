@@ -471,6 +471,10 @@
 
                 plugins: {
                     datalabels: {
+                        font: {
+                            weight: 'bold',
+                            size: 14,
+                        },
                         color: 'black',
                         formatter: (value) => {
                             return value + '%';
@@ -692,6 +696,10 @@
             options: {
                 plugins: {
                     datalabels: {
+                        font: {
+                            weight: 'bold',
+                            size: 14,
+                        },
                         color: 'black',
                         formatter: (value) => {
                             return value + '%';
@@ -747,6 +755,10 @@
             options: {
                 plugins: {
                     datalabels: {
+                        font: {
+                            weight: 'bold',
+                            size: 14,
+                        },
                         color: 'black',
                         formatter: (value) => {
                             return value + '%';

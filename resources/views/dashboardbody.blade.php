@@ -4,11 +4,9 @@
 
         <div class="row gx-2">
             <div class="col-1">
-                <div class="card">
-
-
+                <div style="max-width: 55px" class="card">
                     {{-- <div class="" style="display: flex; align-items: start; "> --}} {{-- FILTER ALL BUTTON --}}
-                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="btn btn-white dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-filter"></i>
                     </button>
                     <div class="dropdown-menu ">
@@ -20,7 +18,7 @@
                                         <select name="startyear" class="form-select">
                                             @foreach (range(2020, date('Y')) as $uyear)
                                                 <option value="{{ $uyear }}">
-                                                    {{ $uyear }}-{{ $uyear + 1 }}
+                                                    {{ $uyear }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -30,7 +28,7 @@
                                         <select name="endyear" class="form-select">
                                             @foreach (range(2020, date('Y')) as $uyear)
                                                 <option value="{{ $uyear }}">
-                                                    {{ $uyear }}-{{ $uyear + 1 }}
+                                                    {{ $uyear }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -48,9 +46,9 @@
                 </div>
 
             </div>
-            <div class="col-6 mt-3">
+            <div class="col-6">
                 @if ($startYear)
-                    <h5>{{ $startYear }}-{{ $startYear + 1 }} to {{ $endYear }}- {{ $endYear + 1 }}</h5>
+                    <h5 class="card" style="max-width: 200px;">{{ $startYear }} to {{ $endYear }}</h5>
                 @endif
             </div>
         </div>
@@ -97,8 +95,10 @@
                     </div>
                     <div class="row">
                         <div class="col-6">
-                            <div class="" style="margin-left: 10px;"> {{-- DESCRIPTION --}}
-                                <h3 class="card-title mt-2" style="font-size: 15pt; ">Programs</h3>
+                            <div class="mt-2" style="margin-left: 10px;"> {{-- DESCRIPTION --}}
+                                <h4><strong>
+                                        Programs
+                                    </strong></h4>
                                 <p>This chart displays the number of scholarships awarded each year for different
                                     programs.</p>
                             </div>
@@ -159,7 +159,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="" style="margin-left: 10px;"> {{-- DESCRIPTION --}}
-                                <h3 class="card-title mt-2" style="font-size: 15pt; ">Gender</h3>
+                                <h4 class="mt-2"><strong> Gender</strong> </h4>
                                 <p>This chart displays the number of scholarships awarded each year for different
                                     genders.</p>
                             </div>
@@ -207,7 +207,7 @@
                             <h4> <strong>
                                     Enrollees
                                 </strong></h4>
-                            <p>This chart displays the number of students availing for each availing scholars.</p>
+                            <p>This chart displays the number of students status for each availing scholars.</p>
                         </div>
                     </div>
                     <div class="col">
@@ -216,28 +216,27 @@
                 </div>
             </div>
         </div>
-
-
-
-    </div>
-    <div class="row">
-
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="col">
-                    <div class="" style="margin-left: 10px;"> {{-- DESCRIPTION --}}
-                        <h4><strong>
-                                Schools
-                            </strong></h4>
-                        <p>This chart displays the number of students availing for each schools.</p>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="col">
+                        <div class=""> {{-- DESCRIPTION --}}
+                            <h4><strong>
+                                    Schools
+                                </strong></h4>
+                            <p>This chart displays the number of students availing for each schools.</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col">
-                    <canvas style="" id="mySchoolChart" width="500" height="600"></canvas>
+                    <div class="col">
+                        <canvas style="" id="mySchoolChart" width="500" height="600"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
+
+
     </div>
+
 
 
     </div>
